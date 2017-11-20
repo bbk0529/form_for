@@ -1,0 +1,14 @@
+<h1>Tweets#new</h1>
+<p>Find me in app/views/tweets/new.html.erb</p>
+
+<%= form_for @tweet do |t| %>
+  <%= t.label :title %>:
+  <%= t.text_field :title %><br />
+  <%= t.label :content %>:
+  <%= t.text_field :content %><br />
+  <%= t.label :photo_url %>:
+  <%= t.file_field :photo_url %><br />
+  <%= t.hidden_field :user_id, value: current_user.id %><br />
+
+  <%= t.submit "Tweet" %>
+<% end %>

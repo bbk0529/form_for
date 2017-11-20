@@ -1,0 +1,16 @@
+<h1>Tweets#index</h1>
+<p>Find me in app/views/tweets/index.html.erb</p>
+
+
+<% @tweets.each do |tweet| %>
+<%= tweet.user.email if tweet.user%>
+<%= tweet.id %>
+<%= tweet.title %>
+<%= tweet.content %>
+<%= image_tag(tweet.photo_url) %>
+<%= link_to '[Show]', tweet_path(tweet.id) %>
+<%= link_to '[x]', "/tweets/#{tweet.id}", method:"delete" %> 
+<%= link_to '[Edit]', edit_tweet_path(tweet) %> <br/>
+<% end %> 
+
+<%= paginate @tweets %>

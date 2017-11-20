@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FormFor</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<%= link_to 'TWITTER HOME', root_path %>
+  	<% if user_signed_in? %>
+		<%= link_to 'Log-Out', destroy_user_session_path, method: :delete %>
+		Welcome <%= current_user.email %>. You are mostly welcomed.
+	<% else %>
+		<%= link_to 'Log-in', new_user_session_path %>
+	<% end %>
+	<%= link_to 'New Tweet', new_tweet_path %>
+
+ 	<p class="notice"><%= notice %></p> <!-- it should be same as - flash[:notice]-->  
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>
